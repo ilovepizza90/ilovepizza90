@@ -1,6 +1,6 @@
 window.addEventListener("keyup", event => {
-  if (event.ctrlKey && event.which === 192) {
-    let xmathscriptruntimeyes = prompt("math")
-    alert(xmathscriptruntimeyes)
+  if (event.ctrlKey && event.key === '`') {
+    let xmathscriptruntimeyes = prompt("sigma math problem");
+    alert(xmathscriptruntimeyes);
   }
 });
