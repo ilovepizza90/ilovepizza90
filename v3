@@ -1,0 +1,23 @@
+/// execute_script.js
+(function(){
+  const url='https://raw.githubusercontent.com/ilovepizza90/ilovepizza90/refs/heads/main/wow.js'; // <-- change
+  let w;
+  function openLoader(){
+    if(w && !w.closed){ try{ w.focus(); }catch{} return; }
+    w = window.open('about:blank');
+    if(!w){ alert('Popup blocked'); return; }
+    const code = `(function(){try{window.opener.postMessage({type:'start',url:'${url}'},'*');var s=document.createElement('script');s.src='${url}';s.async=false;s.onload=function(){window.opener.postMessage({type:'ready'},'*')};s.onerror=function(){window.opener.postMessage({type:'error',message:'failed to load'},'*')};document.head.appendChild(s);}catch(e){window.opener.postMessage({type:'error',message:String(e)},'*')}})();`;
+    const blob = URL.createObjectURL(new Blob([code],{type:'application/javascript'}));
+    w.document.write('<html><body><script src="'+blob+'"></'+'script></body></html>');
+  }
+  document.addEventListener('keydown', e=>{
+    if(e.key === '$' && !document.activeElement?.isContentEditable && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)){
+      e.preventDefault(); openLoader();
+    }
+  });
+  window.addEventListener('message', ev=>{
+    const d = ev.data;
+    if(d?.type === 'ready') console.log('Script loaded');
+    else if(d?.type === 'error') console.error(d.message);
+  });
+})();
