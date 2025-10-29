@@ -1,6 +1,6 @@
 /// execute_script.js
 (function(){
-  const url='https://raw.githubusercontent.com/ilovepizza90/ilovepizza90/refs/heads/main/wow.js'; // <-- change
+  const url='https://raw.githubusercontent.com/ilovepizza90/ilovepizza90/refs/heads/main/o.js'; // <-- change
   let w;
   document.addEventListener('keydown', e=>{
     if(e.key === '$' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){
