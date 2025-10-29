@@ -1,4 +1,5 @@
-javascript:(function(){
+/// execute_script.js
+(function(){
   var url='https://raw.githubusercontent.com/ilovepizza90/ilovepizza90/refs/heads/main/wow.js'; // <-- change
   var w=window.open('','_blank');
   if(!w){ alert('Popup blocked — allow popups for this site'); return; }
